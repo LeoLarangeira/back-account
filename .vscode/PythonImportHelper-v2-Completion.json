@@ -1,0 +1,160 @@
+[
+    {
+        "label": "Client",
+        "importPath": "client",
+        "description": "client",
+        "isExtraImport": true,
+        "detail": "client",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "client",
+        "description": "client",
+        "isExtraImport": true,
+        "detail": "client",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Account",
+        "importPath": "account",
+        "description": "account",
+        "isExtraImport": true,
+        "detail": "account",
+        "documentation": {}
+    },
+    {
+        "label": "Account",
+        "kind": 6,
+        "importPath": "account",
+        "description": "account",
+        "peekOfCode": "class Account():\n    def __init__(self, Client) -> None:\n        self.client = Client\n        self.account = str(f'{uuid4}-0001')\n        self.amount = 0\n    def deposit(self,value):\n        self.amount.append(value)\n    def withdrawl(self,value, account):\n        withdraws = 0\n        if value < 0.0:",
+        "detail": "account",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "kind": 6,
+        "importPath": "client",
+        "description": "client",
+        "peekOfCode": "class Client():\n    def __init__(self, first_name, last_name,birthdate ,cpf, address) -> None:\n        self.first_name = first_name\n        self.last_name = last_name\n        self.cpf = cpf \n        self.birthdate = birthdate\n        self.addres = address \n    def format_addres(self, address):\n        pass",
+        "detail": "client",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def create_user(first_name, last_name, birthdate, cpf, address):\n    if any(client.cpf == cpf for client in USER_LIST):\n        return 'User already created'\n    new_user = Client(first_name, last_name, birthdate, cpf, address)\n    USER_LIST.append(new_user)\n    print()\n    print('==================================')\n    print('Your user is: ')\n    for key, value in new_user.__dict__.items():\n        print(f'{key}: {value}')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "create_account",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def create_account(user):\n    client = Account(user)\n    return client\ndef deposit(value):\n    ACCOUNT.append(value)\ndef withdrawl(value, account):\n    withdraws = 0\n    if value < 0.0:\n        print('=====================')\n        print(\"The value is negative\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "deposit",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def deposit(value):\n    ACCOUNT.append(value)\ndef withdrawl(value, account):\n    withdraws = 0\n    if value < 0.0:\n        print('=====================')\n        print(\"The value is negative\")\n    elif value >= 500.00:\n        print('=====================')\n        print(\"Sorry, you can't withdrawl this amount\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "withdrawl",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def withdrawl(value, account):\n    withdraws = 0\n    if value < 0.0:\n        print('=====================')\n        print(\"The value is negative\")\n    elif value >= 500.00:\n        print('=====================')\n        print(\"Sorry, you can't withdrawl this amount\")\n    elif sum(account) <=  value:\n        print('=====================')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "bank_statement",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def bank_statement(account):\n    if not account:\n        print('=====================')\n        return(\"No bank transactions were made.\")\n    else:\n        total_balance = sum(account)\n        print('=====================')\n        return(f'Your bank balance is ${total_balance:.2f}')\nINPUT_MENU = \"\"\"\n                1 - Login",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main_menu",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main_menu():\n    while True:\n        print(\"          Bank CLI           \")\n        print(MENU)\n        option = input()\n        match option:\n            case \"1\":\n                print(bank_statement(ACCOUNT))\n            case \"2\":\n                print('=====================')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "INPUT_MENU",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "INPUT_MENU = \"\"\"\n                1 - Login\n                2 - Create Account\n            \"\"\"\ndef main_menu():\n    while True:\n        print(\"          Bank CLI           \")\n        print(MENU)\n        option = input()\n        match option:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ACCOUNT",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "ACCOUNT = []\nMENU = \"\"\"\n        1 - bank statement\n        2 - deposit\n        3 - withdrawl\n        4 - exit\n       \"\"\"\nwithdraws = 0\nif __name__ == \"__main__\":\n        print(\"          Bank CLI           \")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "MENU",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "MENU = \"\"\"\n        1 - bank statement\n        2 - deposit\n        3 - withdrawl\n        4 - exit\n       \"\"\"\nwithdraws = 0\nif __name__ == \"__main__\":\n        print(\"          Bank CLI           \")\n        print(INPUT_MENU)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "withdraws",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "withdraws = 0\nif __name__ == \"__main__\":\n        print(\"          Bank CLI           \")\n        print(INPUT_MENU)\n        option = input()\n        match option:\n            case '1':\n                print('Insert your CPF ----> ')\n                cpf = input()\n                if cpf in USER_LIST:",
+        "detail": "main",
+        "documentation": {}
+    }
+]
